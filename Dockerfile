@@ -24,6 +24,6 @@ WORKDIR /app
 ADD pom.xml .
 
 FROM tomcat:9.0-jdk17-openjdk-slim
-COPY --from=build /app/target/*.war /usr/local/tomcat/webapps
+#COPY --from=build /app/target/*.war /usr/local/tomcat/webapps
 EXPOSE 8000
 CMD ["catalina.sh", "run"]
