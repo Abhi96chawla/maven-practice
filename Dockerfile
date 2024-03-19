@@ -20,8 +20,8 @@
 # CMD ["catalina.sh", "run"]
 
 FROM tomcat:9.0-jdk17-openjdk-slim AS build
-RUN mkdir /home/app
-WORKDIR /home/app
+RUN mkdir /app
+WORKDIR /app
 ADD pom.xml .
 RUN mvn clean package
 FROM tomcat:9.0-jdk17-openjdk-slim
