@@ -5,7 +5,7 @@ FROM tomcat:9.0-jdk17-openjdk-slim AS build
 WORKDIR /usr/local/tomcat/webapps
 
 # Copy the WAR file built from Maven
-COPY target/*.war .
+COPY target/**.*war .
 
 # Expose port 8000
 EXPOSE 8000
