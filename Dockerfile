@@ -43,7 +43,7 @@ RUN mvn clean package
 FROM tomcat:9.0-jre8-alpine
 
 # Copy the WAR file from the Maven build stage
-COPY --from=MAVEN_TOOL_CHAIN /tmp/target/*.war $CATALINA_HOME/webapps/webapp.war
+#COPY --from=MAVEN_TOOL_CHAIN /tmp/target/*.war $CATALINA_HOME/webapps/webapp.war
 
 # Expose port 8000 (optional)
 EXPOSE 8000
