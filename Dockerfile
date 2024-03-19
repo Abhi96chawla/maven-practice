@@ -22,7 +22,7 @@
 FROM tomcat:9.0-jdk17-openjdk-slim AS build
 WORKDIR /app
 ADD pom.xml .
-...
+
 FROM tomcat:9.0-jdk17-openjdk-slim
 COPY --from=build /app/target/*.war /usr/local/tomcat/webapps
 EXPOSE 8000
