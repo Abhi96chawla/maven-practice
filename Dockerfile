@@ -27,6 +27,6 @@ ADD pom.xml .
 RUN apt-get update && \
     apt-get install -y maven && \
     mvn clean package
-ADD target/*.war webapp.war
+#ADD target/*.war webapp.war
 EXPOSE 8000
 CMD ["catalina.sh", "run"]
