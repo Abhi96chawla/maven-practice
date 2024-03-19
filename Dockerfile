@@ -1,20 +1,29 @@
-# Use Tomcat as the base image
-FROM tomcat:9.0-jdk17-openjdk-slim AS build
+# # Use Tomcat as the base image
+# FROM tomcat:9.0-jdk17-openjdk-slim AS build
 
-# Set the working directory in the container
-WORKDIR /usr/local/tomcat/webapps
+# # Set the working directory in the container
+# WORKDIR /usr/local/tomcat/webapps
 
-COPY pom.xml .
+# COPY pom.xml .
 
-RUN apt-get update && \
-    apt-get install -y maven && \
-    mvn clean package
+# RUN apt-get update && \
+#     apt-get install -y maven && \
+#     mvn clean package
     
-# Copy the WAR file built from Maven
-COPY . .
+# # Copy the WAR file built from Maven
+# COPY . .
 
-# Expose port 8000
+# # Expose port 8000
+# EXPOSE 8000
+
+# # Command to run Tomcat with the deployed application
+# CMD ["catalina.sh", "run"]
+
+FROM tomcat:9.0-jdk17-openjdk-slim AS build
+WORKDIR /app
+ADD pom.xml .
+...
+FROM tomcat:9.0-jdk17-openjdk-slim
+COPY --from=build /app/target/*.war /usr/local/tomcat/webapps
 EXPOSE 8000
-
-# Command to run Tomcat with the deployed application
 CMD ["catalina.sh", "run"]
