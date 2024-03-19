@@ -4,6 +4,8 @@ FROM tomcat:9.0-jdk17-openjdk-slim AS build
 # Set the working directory in the container
 WORKDIR /usr/local/tomcat/webapps
 
+COPY pom.xml .
+
 RUN apt-get update && \
     apt-get install -y maven && \
     mvn clean package
