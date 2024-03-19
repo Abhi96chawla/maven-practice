@@ -20,9 +20,8 @@
 # CMD ["catalina.sh", "run"]
 
 FROM tomcat:9.0-jdk17-openjdk-slim AS build
-WORKDIR /usr/local/tomcat/webapps/
 ADD pom.xml .
-COPY . .
+#COPY . .
 
 # Build the Maven project
 RUN apt-get update && \
